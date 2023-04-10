@@ -1,0 +1,237 @@
+%% ---------- Define details of the report ----------
+\def \name{[Your name]}
+\def \partners{[Partner(s) name(s)]} % If there are no partners then comment out line 83 and 84
+\def \supervisor{[Dr Supervisor]} % If there are no supervisor then comment out line 85 and 86
+
+\def \reportNumber{ME000-\the\year}
+\def \reportType{[Report type]}
+
+\def \coverPageHeader{RESEARCH PROJECT IN MECHANICAL <or MECHATRONICS> ENGINEERING}
+\def \projectTitle{[Project title]}
+\def \projectTitleSecondLine{[Line 2]}
+\def \projectTitleThirdLine{[Line 3]}
+\def \coverPageDesc{Project Report \reportNumber}
+
+\def \department{Department of Mechanical and Mechatronics Engineering}
+\def \institute{The University of Auckland}
+
+%% ---------- Define what you want in the preface ----------
+\newif{\ifcoverpage}
+\coverpagetrue % Comment out for no cover page
+
+\newif{\iftitlepage}
+\titlepagetrue % Comment out for no title page
+
+\newif{\ifabstract}
+\abstracttrue % Comment out for no abstract
+
+\newif{\ifdeclarationpage}
+\declarationpagetrue % Comment out for no declaration page
+
+\newif{\ifcontentspage}
+\contentspagetrue % Comment out for no contents page
+
+\newif{\ifacknowledgementspage}
+\acknowledgementspagetrue % Comment out for no acknowledgements page
+
+\newif{\ifglossary}
+\glossarytrue % Comment out for no glossary
+
+\newif{\ifabbreviations}
+\abbreviationstrue % Comment out for no abbreviations
+
+% ---------- End of settings ----------
+
+\thispagestyle{empty}
+\pagenumbering{roman}
+% Change default name for code environemnts
+\renewcommand\lstlistingname{Program}  
+
+% ---------- Cover page ----------
+\ifcoverpage
+    \vspace*{5mm}
+
+    \begin{center}
+    \textbf{\large{}\coverPageHeader}{\large\par}
+    \par\end{center}
+
+    \begin{textblock}{105}(52.5,70) 
+
+    \fbox{\begin{minipage}[t][50mm]{105mm}%
+    \vspace*{12pt}
+
+    \begin{center}
+        \reportType\\
+        \textbf{\projectTitle}\\
+        \textbf{\projectTitleSecondLine}\\
+        \textbf{\projectTitleThirdLine}
+        \par
+    \end{center}
+    \begin{center}
+        {\large{}\name}{\large\par}
+    \par
+    \end{center}
+    \begin{center}
+        \coverPageDesc
+    \par\end{center}%
+    \end{minipage}}
+
+    \end{textblock}
+
+    \vspace*{100mm}
+
+    \begin{center}
+    \begin{tabular}{rl}
+    Co-worker: & \partners \tabularnewline
+    \noalign{\vskip1.5em}
+    Supervisor: & \supervisor \tabularnewline
+    \noalign{\vskip1.5em}
+    \end{tabular}
+    \par\end{center}
+
+    \vspace*{20mm}
+
+    \begin{center}
+    \department\\
+    \institute
+    \par\end{center}
+
+    \vspace{1cm}
+
+    \begin{center}
+    \cleanlookdateon \today
+    \par\end{center}
+\fi
+
+% ---------- Title page ----------
+\iftitlepage
+    \clearpage{}
+    \begin{flushleft}
+    \reportNumber
+    \par\end{flushleft}
+
+    \vspace{1em}
+
+    \begin{center}
+    \textbf{\textsc{\large{}PROJECT TITLE GOES HERE}}{\large\par}
+    \par\end{center}
+
+    \vspace{2em}
+
+    \begin{center}
+    \textbf{\large{}\name}{\large\par}
+    \par\end{center}
+
+    \vspace{2em}
+
+    % ---------- Abstract ----------
+    \ifabstract
+        \begin{center}
+        \textbf{\textsc{\large{}ABSTRACT}}{\large\par}
+        \par\end{center}
+
+Abstract goes here.
+    
+    \fi
+
+    \newpage{}
+\fi
+
+
+% ---------- Declaration page ----------
+\ifdeclarationpage
+    \begin{center}
+        \vspace{20cm}
+        \textbf{DECLARATION}
+    \end{center}
+
+    {\textbf{Student}}\\ 
+
+    I hereby declare that: 
+    \begin{enumerate}
+    \item This report is the result of the final year project work carried out by my project partner (see  cover  page)  and  I  under  the  guidance  of  our  supervisor  (see  cover  page)  in  the \the\year~ academic  year  at  the  Department  of  Mechanical and Mechatronics Engineering,  Faculty  of Engineering, University of Auckland.
+    \item This report is not the outcome of work done previously.
+    \item This  report  is  not  the  outcome  of  work  done  in  collaboration,  except  that  with  a potential project sponsor (if any) as stated in the text.
+    \item This report is not the same as any report, thesis, conference article or journal paper, or any other publication or unpublished work in any format.
+    \end{enumerate}
+
+    In the case of a continuing project, please state clearly what has been developed during the project and what was available from previous year(s): 
+
+    \vspace{3cm}
+
+    Signature:  
+
+    \vspace{0.5cm}
+
+    Date: 
+
+    \vspace{1cm}
+
+    \textbf{Supervisor}\\
+
+    I  confirm  that  the  project  work  undertaken  by  this  student  in  the  \the\year~  academic  year is  /  is  not (strikethrough  as  appropriate)  part  of  a  continuing  project,  components  of  which  have been completed previously. Comments, if any: 
+
+    \vspace{3cm}
+
+    Signature:  
+
+    \vspace{0.5cm}
+
+    Date: 
+
+    \newpage{}
+\fi
+
+% ---------- Contents page ----------
+\ifcontentspage
+    \setlength{\parskip}{6pt}
+    \renewcommand{\contentsname}{\large{Table of Contents}}
+
+    \tableofcontents{}
+
+    \newpage{}
+\fi
+
+
+% ---------- Acknowledgements page ----------
+\ifacknowledgementspage
+    \setlength{\parskip}{9pt}
+
+    \section*{Acknowledgements\addcontentsline{toc}{section}{Acknowledgements}\label{sec:Acknowledgements1}}
+
+    Thank important people here.
+
+    \newpage{}
+\fi
+
+% ---------- Glossary ----------
+\ifglossary
+    \section*{Glossary of Terms\addcontentsline{toc}{section}{Glossary of Terms}}
+
+    \begin{longtable}[l]{>{\raggedright}p{0.25\textwidth}>{\raggedright}p{0.7\textwidth}}
+    Term & Definition\tabularnewline
+    \addlinespace
+    \end{longtable}
+
+    \addtocounter{table}{-1}
+\fi
+
+% ---------- Abbreviations ----------
+\ifabbreviations
+    \section*{Abbreviations\addcontentsline{toc}{section}{Abbreviations}}
+
+    \begin{longtable}[l]{>{\raggedright}p{0.25\textwidth}>{\raggedright}p{0.7\textwidth}}
+    AOA & Angle of attack\tabularnewline
+    \addlinespace
+    \end{longtable}
+
+    \addtocounter{table}{-1}
+\fi
+
+\printnomenclature{}\label{nomenclature}
+
+\clearpage{}
+
+\setlength{\parskip}{9pt}
+
+\pagenumbering{arabic}

@@ -1,0 +1,75 @@
+
+% For referencing/citation settings see Packages.tex
+\addcontentsline{toc}{section}{\refname}
+\bibliography{RefDatabase}
+
+
+\newpage{}
+
+\begin{appendices}
+\titleformat{\section} {\normalfont\fontsize{14}{14}\bfseries}{Appendix~\thesection}{1em}{}
+
+% Renaming the captions to include the appendix name
+\renewcommand{\theequation}{\thesection \arabic{equation}}
+\renewcommand{\thefigure}{\thesection \arabic{figure}}
+\renewcommand{\thetable}{\thesection \arabic{table}}
+\renewcommand{\thelstlisting}{\thesection \arabic{lstlisting}}
+
+\section{The First Appendix}
+
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{lstlisting}{0}
+
+\begin{lstlisting}[caption={Some MATLAB script},label={lis:Same-MATLAB-script}]
+% Some example matlab code that is probably non functional
+% but it is just an example
+% John Smith
+clear; clc;
+
+omega_c = 0.2*pi;
+L = 50;
+h = cos(omega_c * (0:L));
+
+[H, W] = freqz(h, 1, 4096);
+
+beta = 1/max(abs(H));
+
+h2 = beta.*cos(omega_c * (0:L));
+freqz(h2, 1, 4096);
+[H, W] = freqz(h2, 1, 4096);
+
+band = find(abs(H) >= 1/sqrt(2));
+
+fc1 = W(band(1)); % the first cutoff frequency.
+fc2 = W(band(end)); % the second cutoff frequency.
+
+fprintf("First cutoff frequency:\n" + ...
+    "\tNormalised frequency:\t%.3f PI\n" + ...
+    "\tDenormalised frequency:\t%.3f Hz\n\n", ...
+    fc1/pi, fc1 * 8000/(2*pi) )
+
+fprintf("Second cutoff frequency:\n" + ...
+    "\tNormalised frequency:\t%.3f PI\n" + ...
+    "\tDenormalised frequency:\t%.3f Hz\n\n", ...
+    fc2/pi, fc2 * 8000/(2*pi) )
+
+fprintf("Passband:\n" + ...
+    "\tNormalised frequency:\t%.3f PI\n" + ...
+    "\tDenormalised frquency:\t%.3f Hz\n\n", ...
+    (fc2 - fc1)/pi, (fc2 - fc1) * 8000/(2*pi) )
+
+
+\end{lstlisting}
+
+\clearpage{}
+
+\section{Second Appendix}
+
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\setcounter{lstlisting}{0}
+
+\end{appendices}
